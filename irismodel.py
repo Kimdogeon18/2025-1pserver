@@ -1,8 +1,7 @@
 import joblib
-import numpy as np
 import pandas as pd
+import numpy as np
 from pydantic import BaseModel
-
 from sklearn.ensemble import RandomForestClassifier
 
 class IrisSpecies(BaseModel):
@@ -22,12 +21,14 @@ class IrisMachineLearning:
             joblib.dump(self.model_rfc, self.rfc_fname)
         return
 
-    def rfc_train(self ):
+    def rfc_train(self):
         X = self.iris_df.drop('species', axis=1)
         y = self.iris_df['species']
+
         rfc = RandomForestClassifier()
-        model = rfc.fit(X, y)
-        return model
+        model_rfc = rfc.fit(X, y)
+
+        return model_rfc
 
     def predict_species(self, sepal_length, sepal_width, petal_length, petal_width):
         X_new = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
