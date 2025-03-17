@@ -23,7 +23,7 @@ pw = document.getElementById("pw")
 
   }).done(function(response) {
 
-        txtOut.value = response.prediction + "  " + response.probability
+        txtOut.value = response.prediction + "일 확률:  " + response.probability
 
         console.log(response)
 
